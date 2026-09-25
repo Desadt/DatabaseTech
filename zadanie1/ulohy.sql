@@ -41,3 +41,8 @@ GROUP BY category;
 SELECT customer_name, SUM(o.sales) as total_value FROM customers
 INNER JOIN orders o ON customers.customer_id = o.customer_id
 GROUP BY customers.customer_id, customer_name HAVING SUM(o.sales) > 2000;
+
+--uloha 11
+SELECT region, SUM(o.sales) as total_sales, ROUND(AVG(o.discount), 4) as avarege_discount, COUNT(o.order_id) as number_of_orders FROM customers c
+INNER JOIN orders o on c.customer_id = o.customer_id
+GROUP BY region;
