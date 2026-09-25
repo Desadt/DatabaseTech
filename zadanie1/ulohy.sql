@@ -58,3 +58,14 @@ END) as low_value
 FROM customers c
 INNER JOIN orders o ON c.customer_id = o.customer_id
 GROUP BY region;
+
+--uloha 13
+SELECT customer_name, SUM(o.sales) as total_sales, AVG(o.discount) as avarage_discount, COUNT(o.order_id),
+CASE 
+    WHEN SUM(o.sales) > 2500 THEN 'VIP'  
+    ELSE  'REGULAR'
+END as customer_type
+FROM customers c
+INNER JOIN orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id
+ORDER BY total_sales DESC;
