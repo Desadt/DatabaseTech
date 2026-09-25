@@ -26,3 +26,8 @@ FULL OUTER JOIN orders o ON customers.customer_id = o.customer_id;
 SELECT region, sum(o.sales) AS total_sales FROM customers
 INNER JOIN orders o ON customers.customer_id = o.customer_id
 GROUP BY region;
+
+--uloha 8
+SELECT customer_name, COUNT(o.order_id) as number_of_orders FROM customers
+LEFT JOIN orders o ON customers.customer_id = o.customer_id
+GROUP BY customers.customer_id;;
