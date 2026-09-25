@@ -36,3 +36,8 @@ GROUP BY customers.customer_id;
 SELECT category, AVG(o.discount) as average_discount FROM products
 INNER JOIN orders o ON products.product_id = o.product_id
 GROUP BY category;
+
+--uloha 10
+SELECT customer_name, SUM(o.sales) as total_value FROM customers
+INNER JOIN orders o ON customers.customer_id = o.customer_id
+GROUP BY customers.customer_id, customer_name HAVING SUM(o.sales) > 2000;
