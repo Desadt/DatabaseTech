@@ -16,12 +16,14 @@ CREATE Table products(
 
 CREATE Table orders(
     order_id VARCHAR(20) PRIMARY KEY,
+    customer_id VARCHAR(20),
+    product_id VARCHAR(20),
     FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
     FOREIGN KEY (product_id) REFERENCES products(product_id),
     order_date DATE,
     ship_date DATE,
-    sales DECIMAL(2),
+    sales NUMERIC(10,2),
     quantity INT,
-    discount DECIMAL(2),
-    profint DECIMAL(2)
+    discount NUMERIC(10,2),
+    profit NUMERIC(10,2)
 );
