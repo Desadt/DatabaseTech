@@ -17,3 +17,7 @@ GROUP BY region;
 SELECT product_name, COALESCE(SUM(o.sales), 0) AS total_sales FROM products
 LEFT JOIN orders o ON products.product_id = o.product_id
 GROUP BY product_name ORDER BY total_sales DESC;
+
+--uloha 6
+SELECT customer_name, o.order_id, o.sales FROM customers
+FULL OUTER JOIN orders o ON customers.customer_id = o.customer_id;
