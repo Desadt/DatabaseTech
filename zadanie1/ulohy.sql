@@ -21,3 +21,8 @@ GROUP BY product_name ORDER BY total_sales DESC;
 --uloha 6
 SELECT customer_name, o.order_id, o.sales FROM customers
 FULL OUTER JOIN orders o ON customers.customer_id = o.customer_id;
+
+--uloha 7
+SELECT region, sum(o.sales) AS total_sales FROM customers
+INNER JOIN orders o ON customers.customer_id = o.customer_id
+GROUP BY region;
