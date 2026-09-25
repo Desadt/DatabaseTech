@@ -30,4 +30,9 @@ GROUP BY region;
 --uloha 8
 SELECT customer_name, COUNT(o.order_id) as number_of_orders FROM customers
 LEFT JOIN orders o ON customers.customer_id = o.customer_id
-GROUP BY customers.customer_id;;
+GROUP BY customers.customer_id;
+
+--uloha 9
+SELECT category, AVG(o.discount) as average_discount FROM products
+INNER JOIN orders o ON products.product_id = o.product_id
+GROUP BY category;
