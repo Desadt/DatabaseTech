@@ -19,3 +19,10 @@ WHERE product_category = (
     LIMIT 1
 )
 ORDER BY sales_id ASC;
+
+--uloha3
+SELECT 
+    product_name, 
+    total_amount, 
+    (SELECT AVG(total_amount) FROM flourmills_sales) AS avg_amount
+FROM flourmills_sales;
