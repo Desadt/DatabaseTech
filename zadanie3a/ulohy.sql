@@ -29,3 +29,45 @@ SELECT order_id, customer_id, product_id, sales, quantity, discount FROM orders;
 SELECT * FROM analyst_orders;
 
 DROP VIEW analyst_orders;
+
+--uloha 4
+CREATE INDEX idx_orders_customer_id
+ON orders (customer_id);
+
+SELECT *
+FROM orders
+WHERE customer_id = 'C001';
+
+--uloha 5
+CREATE INDEX idx_orders_order_date
+ON orders (order_date);
+
+SELECT
+    DATE_TRUNC('month', order_date) AS mesiac,
+    SUM(sales) AS celkovy_predaj
+FROM orders
+GROUP BY DATE_TRUNC('month', order_date)
+ORDER BY mesiac ASC;
+
+--uloha 6
+CREATE INDEX idx_orders_region_category
+ON orders (customer_id, order_date);
+
+SELECT o.*, c.*
+FROM orders o
+JOIN customers c
+    ON o.customer_id = c.customer_id
+WHERE c.region = 'West'
+  AND o.order_date >= DATE '2024-01-01';
+
+--uloha 7
+EXPLAIN ANALYZE
+SELECT *
+FROM orders
+WHERE customer_id = 'C001';
+
+--uloha 8
+CREATE DATABASE retail_sales;
+
+ALTER DATABASE retail_sales
+SET datestyle TO 'ISO, MDY';
