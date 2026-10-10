@@ -89,3 +89,26 @@ SELECT
     revenue_percentage
 FROM revenue_percentages
 ORDER BY revenue DESC;
+
+--uloha 5
+WITH customer_transactions AS (
+    SELECT
+        customer_id,
+        product_name,
+        sale_date,
+        total_amount,
+        ROW_NUMBER() OVER (
+            PARTITION BY customer_id
+            ORDER BY sale_date DESC
+        ) AS rn
+    FROM flourmills_sales
+)
+SELECT
+    customer_id,
+    product_name,
+    sale_date,
+    total_amount
+FROM customer_transactions
+WHERE rn = 1
+ORDER BY customer_id ASC
+LIMIT 5;
