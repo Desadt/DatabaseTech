@@ -48,3 +48,48 @@ ORDER BY
     region ASC,
     total_profit DESC
 LIMIT 5;
+
+--uloha 3
+WITH customer_sales AS (
+    SELECT
+        c.customer_name,
+        SUM(o.sales) AS total_sales
+    FROM orders o
+    JOIN customers c
+        ON o.customer_id = c.customer_id
+    GROUP BY
+        c.customer_id,
+        c.customer_name
+)
+SELECT
+    customer_name,
+    total_sales,
+    NTILE(4) OVER (
+        ORDER BY total_sales DESC
+    ) AS quartile
+FROM customer_sales
+ORDER BY total_sales DESC;
+
+WITH customer_sales AS (
+    SELECT
+        c.customer_name,
+        SUM(o.sales) AS total_sales
+    FROM orders o
+    JOIN customers c
+        ON o.customer_id = c.customer_id
+    GROUP BY c.customer_id, c.customer_name
+),
+customer_quartiles AS (
+    SELECT
+        customer_name,
+        total_sales,
+        NTILE(4) OVER (
+            ORDER BY total_sales DESC
+        ) AS quartile
+    FROM customer_sales
+)
+SELECT *
+FROM customer_quartiles
+WHERE customer_name = 'Customer_26';
+
+--uloha 4
