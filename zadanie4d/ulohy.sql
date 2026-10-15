@@ -148,3 +148,54 @@ FROM category_sales
 ORDER BY
     category ASC,
     pct_of_category DESC;
+
+--uloha 6
+WITH customer_activity AS (
+    SELECT
+        o.customer_id,
+        c.customer_name,
+        MAX(o.order_date) OVER (
+            PARTITION BY o.customer_id
+        ) AS last_order_date,
+        MAX(o.order_date) OVER () AS latest_order_date
+    FROM orders o
+    JOIN customers c
+        ON o.customer_id = c.customer_id
+)
+SELECT DISTINCT
+    customer_id,
+    customer_name,
+    last_order_date
+FROM customer_activity
+WHERE last_order_date < latest_order_date - INTERVAL '90 days'
+ORDER BY last_order_date ASC;
+
+--uloha 7
+WITH monthly_sales AS (
+    SELECT
+        DATE_TRUNC('month', order_date)::DATE AS month,
+        SUM(sales) AS monthly_sales
+    FROM orders
+    GROUP BY DATE_TRUNC('month', order_date)
+),
+sales_with_lag AS (
+    SELECT
+        month,
+        monthly_sales,
+        LAG(monthly_sales) OVER (
+            ORDER BY month
+        ) AS prev_month_sales
+    FROM monthly_sales
+)
+SELECT
+    month,
+    monthly_sales,
+    prev_month_sales,
+    monthly_sales - prev_month_sales AS sales_change,
+    ROUND(
+        (monthly_sales - prev_month_sales) * 100.0 /
+        NULLIF(prev_month_sales, 0),
+        2
+    ) AS growth_percentage
+FROM sales_with_lag
+ORDER BY month ASC;
