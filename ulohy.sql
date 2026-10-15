@@ -108,3 +108,60 @@ SELECT
     sales_quartile
 FROM customer_quartiles
 ORDER BY total_amount DESC;
+
+--uloha 7
+WITH monthly_sales AS (
+    SELECT
+        country,
+        DATE_TRUNC('month', invoice_date)::date AS month,
+        SUM(quantity * unit_price) AS total_amount
+    FROM retail_sales
+    GROUP BY country, DATE_TRUNC('month', invoice_date)
+),
+sales_quartiles AS (
+    SELECT
+        country,
+        month,
+        total_amount,
+        NTILE(4) OVER (
+            PARTITION BY country
+            ORDER BY total_amount DESC
+        ) AS sales_quartile
+    FROM monthly_sales
+)
+SELECT
+    country,
+    month,
+    total_amount,
+    sales_quartile
+FROM sales_quartiles
+ORDER BY country ASC, month ASC;
+
+--uloha 8
+WITH ranked_purchases AS (
+    SELECT
+        customer_id,
+        invoice_no,
+        invoice_date,
+        stock_code,
+        description,
+        quantity,
+        unit_price,
+        ROW_NUMBER() OVER (
+            PARTITION BY customer_id
+            ORDER BY invoice_date ASC, invoice_no ASC
+        ) AS rn
+    FROM retail_sales
+    WHERE customer_id IS NOT NULL
+)
+SELECT
+    customer_id,
+    invoice_no,
+    invoice_date,
+    stock_code,
+    description,
+    quantity,
+    unit_price
+FROM ranked_purchases
+WHERE rn = 1
+ORDER BY customer_id ASC;
