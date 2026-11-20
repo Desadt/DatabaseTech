@@ -60,3 +60,76 @@ UNION ALL
 SELECT 'genres_movies',
     (SELECT COUNT(*) FROM bronze.genres_movies),
     (SELECT COUNT(*) FROM silver.stg_genres_movies);
+
+
+SELECT table_name
+FROM information_schema.tables
+WHERE table_schema = 'gold'
+AND table_type = 'BASE TABLE'
+ORDER BY table_name;
+
+SELECT 'dim_user' AS tabulka,
+       COUNT(*) AS pocet
+FROM gold.dim_user
+
+UNION ALL
+
+SELECT 'dim_movies', COUNT(*)
+FROM gold.dim_movies
+
+UNION ALL
+
+SELECT 'dim_date', COUNT(*)
+FROM gold.dim_date
+
+UNION ALL
+
+SELECT 'dim_time', COUNT(*)
+FROM gold.dim_time
+
+UNION ALL
+
+SELECT 'fact_rating', COUNT(*)
+FROM gold.fact_rating;
+
+SELECT * FROM gold.dim_user LIMIT 10;
+
+SELECT * FROM gold.dim_movies LIMIT 10;
+
+SELECT * FROM gold.dim_date LIMIT 10;
+
+SELECT * FROM gold.dim_time LIMIT 10;
+
+SELECT * FROM gold.fact_rating LIMIT 10;
+
+SELECT
+    movie_id,
+    title,
+    release_year,
+    genres
+FROM gold.dim_movies
+WHERE genres LIKE '%Fantasy%'
+LIMIT 20;
+
+
+SELECT
+    f.rating_id,
+    u.user_id,
+    u.gender,
+    u.age_group,
+    u.occupation,
+    m.title,
+    m.genres,
+    f.rating,
+    d.rated_at AS rating_date,
+    t.rated_time
+FROM gold.fact_rating f
+JOIN gold.dim_user u
+    ON f.user_id = u.user_id
+JOIN gold.dim_movies m
+    ON f.movie_id = m.movie_id
+JOIN gold.dim_date d
+    ON f.date_id = d.date_id
+JOIN gold.dim_time t
+    ON f.time_id = t.time_id
+LIMIT 20;
