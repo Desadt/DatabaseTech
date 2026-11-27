@@ -1,0 +1,17 @@
+models:
+  - name: stg_users
+    description: Očistení a pretypovaní používatelia zo zdroja bronze.users.
+    columns:
+      - name: user_id
+        description: Identifikátor používateľa.
+      - name: age
+        description: Identifikátor vekovej skupiny.
+
+Ďalšou možnosťou je pridanie dátových testov do YAML súborov, napríklad nasledovne:
+
+      - name: gender
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['M', 'F']

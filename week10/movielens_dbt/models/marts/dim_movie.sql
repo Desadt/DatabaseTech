@@ -13,4 +13,4 @@ GROUP BY
     m.movie_id,
     m.title,
     m.release_year
-ORDER BY m.movie_id;
+ORDER BY m.movie_id
