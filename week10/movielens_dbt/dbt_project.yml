@@ -1,0 +1,29 @@
+name: movielens_dbt
+version: '1.0.0'
+profile: movielens_dbt
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:  # pomocna premenna pre bronze schemu
+  bronze_schema: bronze
+
+models:
+  movielens_dbt:
+    staging:
+      +materialized: view
+      +schema: silver
+    marts:
+      +materialized: table
+      +schema: gold
+    reporting:
+      +materialized: view
+      +schema: reporting

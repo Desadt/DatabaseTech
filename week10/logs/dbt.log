@@ -1,0 +1,77 @@
+[0m12:23:36.224504 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019B69D313D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019B67DF3980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019B6C487EF0>]}
+
+
+============================== 12:23:36.230065 | 2b3b9b13-4300-4108-a600-af37413f1e9a ==============================
+[0m12:23:36.230065 [info ] [MainThread]: Running with dbt=1.13.0-b1
+[0m12:23:36.231625 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\mino0\\.dbt', 'use_colors': 'True', 'hints_enabled': 'True', 'invocation_command': 'dbt init movielens_dbt', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'logs'}
+[0m12:23:36.231625 [debug] [MainThread]: Tracking: tracking
+[0m12:23:36.268639 [debug] [MainThread]: Starter project path: C:\Users\mino0\anaconda3\envs\week10\Lib\site-packages\dbt\include\starter_project
+[0m12:23:36.285174 [info ] [MainThread]: Setting up your profile.
+[0m12:24:05.310143 [info ] [MainThread]: Profile movielens_dbt written to C:\Users\mino0\.dbt\profiles.yml using target's profile_template.yml and your supplied values.
+[0m12:24:05.314755 [info ] [MainThread]: Running dbt debug to validate the project...
+[0m12:24:05.316272 [info ] [MainThread]: dbt version: 1.13.0-b1
+[0m12:24:05.316272 [info ] [MainThread]: python version: 3.12.16
+[0m12:24:05.317785 [info ] [MainThread]: python path: C:\Users\mino0\anaconda3\envs\week10\python.exe
+[0m12:24:05.317785 [info ] [MainThread]: os info: Windows-11-10.0.26200-SP0
+[0m12:24:05.358522 [info ] [MainThread]: Using profiles dir at C:\Users\mino0\.dbt
+[0m12:24:05.358522 [info ] [MainThread]: Using profiles.yml file at C:\Users\mino0\.dbt\profiles.yml
+[0m12:24:05.359527 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\mino0\Documents\Database Technologies\week10\movielens_dbt\dbt_project.yml
+[0m12:24:05.360625 [info ] [MainThread]: adapter type: postgres
+[0m12:24:05.362167 [info ] [MainThread]: adapter version: 1.11.0
+[0m12:24:05.486357 [info ] [MainThread]: Configuration:
+[0m12:24:05.486357 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m12:24:05.487925 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m12:24:05.487925 [info ] [MainThread]: Required dependencies:
+[0m12:24:05.487925 [debug] [MainThread]: Executing "git --help"
+[0m12:24:05.553612 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m12:24:05.555128 [debug] [MainThread]: STDERR: "b''"
+[0m12:24:05.555128 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m12:24:05.555128 [info ] [MainThread]: Connection:
+[0m12:24:05.556643 [info ] [MainThread]:   host: localhost
+[0m12:24:05.556643 [info ] [MainThread]:   port: 5432
+[0m12:24:05.556643 [info ] [MainThread]:   user: postgres
+[0m12:24:05.556643 [info ] [MainThread]:   database: movielens_dbt
+[0m12:24:05.558155 [info ] [MainThread]:   schema: dbt
+[0m12:24:05.558155 [info ] [MainThread]:   connect_timeout: 10
+[0m12:24:05.558155 [info ] [MainThread]:   role: None
+[0m12:24:05.558155 [info ] [MainThread]:   search_path: None
+[0m12:24:05.559696 [info ] [MainThread]:   keepalives_idle: 0
+[0m12:24:05.560219 [info ] [MainThread]:   sslmode: None
+[0m12:24:05.560734 [info ] [MainThread]:   sslcert: None
+[0m12:24:05.560734 [info ] [MainThread]:   sslkey: None
+[0m12:24:05.560734 [info ] [MainThread]:   sslrootcert: None
+[0m12:24:05.560734 [info ] [MainThread]:   application_name: dbt
+[0m12:24:05.562246 [info ] [MainThread]:   autocommit: False
+[0m12:24:05.562246 [info ] [MainThread]:   retries: 1
+[0m12:24:05.562246 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m12:24:06.021994 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m12:24:06.436642 [debug] [MainThread]: Using postgres connection "debug"
+[0m12:24:06.438162 [debug] [MainThread]: On debug: select 1 as id
+[0m12:24:06.438162 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m12:24:06.514629 [debug] [MainThread]: SQL status: SELECT 1 in 0.076 seconds
+[0m12:24:06.514629 [debug] [MainThread]: On debug: Close
+[0m12:24:06.516144 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m12:24:06.516144 [info ] [MainThread]: [32mAll checks passed![0m
+[0m12:24:06.517663 [info ] [MainThread]: Your new dbt project "movielens_dbt" was created!
+Initialized new project in C:\Users\mino0\Documents\Database Technologies\week10\movielens_dbt\movielens_dbt
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:24:06.519740 [debug] [MainThread]: Command `dbt init` succeeded at 12:24:06.519740 after 30.45 seconds
+[0m12:24:06.520251 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m12:24:06.520251 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019B67DF3980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019B6A710F20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000019B6C487EF0>]}
+[0m12:24:06.521774 [debug] [MainThread]: Flushing usage events
+[0m12:24:07.002962 [debug] [MainThread]: An error was encountered while trying to flush usage events
